@@ -103,4 +103,91 @@ public class BinarySearchTree {
         printTree(node.getLeftChild());
         printTree(node.getRightChild());
     }
+
+    // function to delete a node from BST
+    public Node deleteNode(Node root, int value) {
+
+        // pointer to store the parent of the current node
+        Node parent = null;
+        // start with the root node
+        Node current = root;
+
+        // search key in the BST and set its parent pointer
+        while(current != null && current.getData() != value) {
+            // update the parent to the current node
+            parent = current;
+
+            // if the given key is lessthan the current node, go to the left sub tree
+            // otherwise go the right tree
+            if (value < current.getData()){
+                current = current.getLeftChild();
+            } else {
+                current.getRightChild();
+            }
+        }
+
+        // return if the key is not found in the tree
+        if (current == null) {
+            return root;
+        }
+
+        // Case 1: node to be deleted has no children it is a leaf node
+        if (current.getLeftChild() == null && current.getRightChild() == null){
+            // if the node to be deleted is not a root node, then its parent left/right child to null
+            if (current != root) {
+                if (parent.getLeftChild() == current){
+                    parent.setLeftChild(null);
+                } else {
+                    parent.setRightChild(null);
+                }
+            }
+            // if the tree has only a root, set it to null
+            else{
+                root = null;
+            }
+        }
+
+        // case 2: node ot be deleted has two children
+        else if (current.getLeftChild() != null && current.getRightChild() != null) {
+            // find its inorder successor node
+            Node successor = getMinimumKey(current.getRightChild());
+
+            // store successor value
+            int val = successor.getData();
+
+            // recursiely delete the successor, note that successor will have at most one child(right child)
+            deleteNode(root, successor.getData());
+
+            current.setData(val);
+        }
+
+        // case 3: node to be dleted has only one child
+        else{
+            // Choose a child Node
+            Node child = (current.getLeftChild() != null) ? current.getLeftChild() : current.getRightChild();
+
+            // if the node to be deleted is not a root, set its parent to its child
+            if (current != root) {
+                if (current == parent.getLeftChild()) {
+                    parent.setLeftChild(child);
+                } else {
+                    parent.setLeftChild(child);
+                }
+            }
+            // if the node to be deleted is a root node, then set the root to the child
+            else {
+                root = child;
+            }
+        }
+        return root;
+    }
+
+    // Helper function to find minimum value node in the subtree rooted at `curr`
+    public static Node getMinimumKey(Node curr)
+    {
+        while (curr.getLeftChild() != null) {
+            curr = curr.getLeftChild();
+        }
+        return curr;
+    }
 }

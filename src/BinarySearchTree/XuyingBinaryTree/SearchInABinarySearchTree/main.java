@@ -18,5 +18,8 @@ public class main {
         System.out.println("sjfkjselkfjs");
         System.out.println(nodes.size());
         nodes.stream().filter(s -> s !=null).forEach(s -> System.out.println(s.getData()));
+        System.out.println("delete");
+        Node node = bst.deleteNode(bst.getRoot(), 5);
+        bst.printTree(node);
     }
 }
