@@ -184,4 +184,82 @@ public class BinarySearchTree {
         }
         return curr;
     }
+
+    /*
+    *  In order traverse in a left-root-right order: we first visit the left node, then comes the turn of the root, and finally the right child
+    * the following steps are required to perform in-order traversal Starting from the root node:
+    * 1: traverser the left sub-tree of the current node, recursively using the InOrder() function
+    * 2: visit the current node and read
+    * 3: traverse the right sub-tree of currentNode, recursively using the InOrder() function
+    * */
+
+    public void inOrder(Node node) {
+        if(node == null) {
+            return;
+        }
+        inOrder(node.getLeftChild());
+        System.out.print(node.getData() + " ");
+        inOrder(node.getRightChild());
+    }
+
+    /*
+    * Pre-order root-left-right order, we first visit the root/parent node and then the children, First the left child and then right one
+    * 1: visit the current node and display its data
+    * 2: traverse the left sub-tree of current-node, recursively using the preOrder() function
+    * 3: traverse the right sub-tree of current-node, recursively using the preOrder() function
+    * */
+
+    public void preOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        System.out.print(node.getData() + " ");
+        preOrder(node.getLeftChild());
+        preOrder(node.getRightChild());
+    }
+
+    /*
+    * Post-order traversal
+    * left-right-root
+    * 1: traverse the left,
+    * 2: traverse the right
+    * 3: traverse the root
+    * */
+
+    public void postOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        postOrder(node.getLeftChild());
+        postOrder(node.getRightChild());
+        System.out.print(node.getData() + " ");
+    }
+
+    public int findHeight(Node root) {
+
+        int h = 1;
+        if (root == null){
+            return 0;
+        }else{
+            h = h +1;
+            findHeight(root.getLeftChild());
+            findHeight(root.getRightChild());
+        }
+        return h;
+    }
+
+    // Height of a node -- maximum number of connections between the node and a leaf node in its path
+    // height of a tree height of its root node
+
+    public int findH(Node root) {
+        // base case
+        if(root == null) {
+            return  -1;
+        }else {
+            // root and leaf is 1
+            return 1 + Math.max(findH(root.getLeftChild()), findH(root.getRightChild()));
+        }
+    }
+
 }

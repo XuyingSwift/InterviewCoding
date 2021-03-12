@@ -21,5 +21,26 @@ public class main {
         System.out.println("delete");
         Node node = bst.deleteNode( 5);
         bst.printTree(node);
+        bst.inOrder(node);
+
+        System.out.println();
+        System.out.println("Print the tree in pre-order, root, left, right");
+        bst.preOrder(node);
+
+        System.out.println();
+        System.out.println("Print the tree in post-order, left, right, root");
+        bst.postOrder(node);
+
+        System.out.println();
+        System.out.println("the height of the tree, root to leaf");
+        int h = bst.findHeight(bst.getRoot());
+        System.out.println(h);
+
+        System.out.println();
+        System.out.println("the height of the tree, root to leaf");
+        int h1 = bst.findH(bst.getRoot());
+        System.out.println(h1);
     }
+
+
 }
