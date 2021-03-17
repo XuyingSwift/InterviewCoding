@@ -40,6 +40,29 @@ public class main {
         System.out.println("the height of the tree, root to leaf");
         int h1 = bst.findH(bst.getRoot());
         System.out.println(h1);
+
+
+        System.out.println();
+        System.out.println("Find the kth ancestors");
+        BinarySearchTree binarySearchTree = new BinarySearchTree();
+        binarySearchTree.add(6);
+        binarySearchTree.add(4);
+        binarySearchTree.add(9);
+        binarySearchTree.add(2);
+        binarySearchTree.add(5);
+        binarySearchTree.add(8);
+        binarySearchTree.add(12);
+        binarySearchTree.add(10);
+        binarySearchTree.add(14);
+
+        binarySearchTree.inOrder(binarySearchTree.getRoot());
+        System.out.println();
+        List<Integer> result = binarySearchTree.findAncestor(10);
+        result.forEach(System.out::println);
+
+        System.out.println();
+        Node re = binarySearchTree.findLCA(binarySearchTree.getRoot(), 4, 14);
+        System.out.println(re.getData());
     }
 
 

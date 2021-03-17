@@ -2,6 +2,7 @@ package BinarySearchTree.XuyingBinaryTree.SearchInABinarySearchTree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class BinarySearchTree {
     // a binary search tree is that valueOf(leftchild) <= current < rightChild
@@ -261,5 +262,46 @@ public class BinarySearchTree {
             return 1 + Math.max(findH(root.getLeftChild()), findH(root.getRightChild()));
         }
     }
+
+    // this method it's to find the kth node's ancestor
+    public List<Integer> findAncestor(int value) {
+        if (this.root == null) {
+            return null;
+        }
+        List<Integer> ancestors = new ArrayList<>();
+        Node current = this.root;
+        while ( current != null && current.getData() != value) {
+            // this point it's parent
+            ancestors.add(current.getData());
+            if (value >= current.getData()) {
+                // keep traversing
+                current = current.getRightChild();
+            }else {
+                current = current.getLeftChild();
+            }
+        }
+        return ancestors;
+    }
+
+    // this method it's to find the lowest common ancestor
+    public Node findLCA(Node root, int p, int q) {
+        if(root == null){
+            return null;
+        }
+        if(p== q){
+            return null;
+        }
+        if ((p == root.getData() )|| (q == root.getData())){
+            return root;
+        }if(((p < root.getData()) && (q > root.getData())) || ((q < root.getData()) && (p > root.getData()))){
+            return root;
+        }if(p< root.getData() && q< root.getData()){
+            return findLCA(root.getLeftChild(),p,q);
+        }else{
+            return findLCA(root.getRightChild(),p,q);
+        }
+
+    }
+
 
 }
