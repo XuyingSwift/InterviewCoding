@@ -63,6 +63,9 @@ public class main {
         System.out.println();
         Node re = binarySearchTree.findLCA(binarySearchTree.getRoot(), 4, 14);
         System.out.println(re.getData());
+
+        System.out.println();
+        binarySearchTree.printKNodes(binarySearchTree.getRoot(), 2);
     }
 
 

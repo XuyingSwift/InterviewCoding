@@ -303,5 +303,21 @@ public class BinarySearchTree {
 
     }
 
+    // print k distance node from the root
+    public void printKNodes(Node root, int k) {
+        //base case 1: root is null
+        if (root == null) {
+            return;
+        }
+        // base case 2: k == 0
+        if (k == 0) {
+            System.out.print(root.getData() + " ");
+        }
+        // recursion case
+        else {
+            printKNodes(root.getLeftChild(),k-1);
+            printKNodes(root.getRightChild(),k-1);
+        }
+    }
 
 }
