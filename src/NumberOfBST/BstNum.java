@@ -1,4 +1,4 @@
-package BinarySearchTree.XuyingBinaryTree.NumberOfBST;
+package NumberOfBST;
 
 public class BstNum {
 
