@@ -1,7 +1,7 @@
 "# InterviewCoding" 
 
 
-| Ararys | Solutions |
-| ------------- | ------------- |
-| leetcode: Third maximum Number | https://app.pluralsight.com/library/  |
+| Ararys | Solutions | Youtube Lecture |
+| ------------- | ------------- | ------------- |
+| leetcode: Third maximum Number | https://app.pluralsight.com/library/  |------------- |
 | Content Cell  | Content Cell  |
